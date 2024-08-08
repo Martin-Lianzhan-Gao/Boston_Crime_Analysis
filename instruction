@@ -1,0 +1,16 @@
+
+// go into work directory
+cd project
+// run docker-compose
+docker-compose -f docker-compose_hdfs_spark.yml up -d
+// check and find namenode 
+docker ps
+// go to the bash terminal of hadoop namenode
+docker exec -it  e064508528e6 bash
+// give access right
+sudo chmod -R 777 nbs/
+// put dataset into hdfs
+hdfs dfs -put /home/nbs/crime_Boston.csv /crime_Boston.csv
+// check weather exists in hdfs
+hdfs dfs -ls /
+
